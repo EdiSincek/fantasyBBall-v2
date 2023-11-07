@@ -1,0 +1,155 @@
+.WeeklyStatsPage {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+}
+
+.weeklyTableLabel{
+    position: absolute;
+    left:73%;
+    top:0%;
+    color:rgb(160, 190, 202);
+    font-size:35px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.drTableWeekly {
+    position: relative;
+    width: 80%;
+    top:7%;
+    font-family: system-ui;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    
+}
+
+.drTableWeekly thead th {
+    background-color: rgba(63, 58, 58, 0.781);
+    color: rgb(224, 210, 210);
+    width:300px;
+    border:solid rgb(29, 28, 28) 2px;
+    border-radius: 10%;
+}
+
+.drTableWeekly tbody td {
+    position: relative;
+    text-align: center;
+    background-color: rgba(153, 162, 177, 0.527);
+    border: 1px solid black;
+    color: rgb(247, 242, 242);
+    border-radius: 10%;
+    
+}
+
+
+.positionCircle-good{
+    position: relative;
+    left:37%;
+    border-radius: 35%;
+    margin-bottom: 2px;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border: thin dotted #000;
+    color: #000;
+    text-align: center;
+    font-family: cursive;
+    font-size:15px;
+    font-weight: bold;
+    background-color: rgb(51, 172, 26);
+
+}
+
+.positionCircle-mid {
+    position: relative;
+    left: 37%;
+    border-radius: 35%;
+    margin-bottom: 2px;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border: thin dotted #000;    color: #000;
+    text-align: center;
+    font-family: cursive;
+    font-size: 15px;
+    font-weight: bold;    background-color: rgba(196, 183, 8, 0.842)
+}
+
+.positionCircle-bad {
+    position: relative;
+    left: 37%;
+    border-radius: 35%;
+    margin-bottom: 2px;
+    width: 23px;
+    height: 22px;
+    background: #fff;
+    border: thin dotted #000;    color: #000;
+    text-align: center;
+    font-family: cursive;
+    font-size: 13.5px;
+    font-weight: bold;    background-color: rgba(204, 134, 126, 0.842)
+}
+
+.tdTotalPoints{
+    width: 20px;
+}
+
+.weeklyValue{
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.weeklyPosition{
+    border:blue solid 5px;
+}
+
+.weeklyPositionContent{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom:1px;
+
+}
+
+.weeklyMedalImage{
+    position: absolute;
+    width:42px;
+    height:45px;
+    top: 7px;
+    left:30%;
+}
+
+.weeklyMedalLoserImage{
+    position: absolute;
+    top:10%;
+    height: 45px;
+    width:50px;
+    left:24%;
+}
+
+.weeklyPositionValue{
+    position: relative;
+    font-size: 25px;
+    width: 100%;
+    height: 100%;
+    top:15%;
+}
+
+.weeklyMatchupsWon{
+    color:rgb(145, 240, 21);
+    font-size: 18px;
+}
+
+.weeklyMatchupsTied {
+    color: rgb(241, 228, 111);
+    font-size: 18px;
+}
+
+.weeklyMatchupsLost {
+    color: rgb(248, 117, 100);
+    font-size: 18px;
+}
+
+
