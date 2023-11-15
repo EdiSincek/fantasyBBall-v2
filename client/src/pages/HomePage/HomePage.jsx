@@ -3,9 +3,9 @@ import "./HomePage.css";
 
 function HomePage() {
   return (
-    <div class="container">
-      <div class="neon">FANTASY VZ </div>
-      <div class="flux">2023.-2024. </div>
+    <div className="container">
+      <div className="neon">FANTASY VZ </div>
+      <div className="flux">2023.-2024. </div>
     </div>
   );
 }

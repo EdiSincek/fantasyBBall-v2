@@ -1,0 +1,33 @@
+.TeamRosters{
+    position: absolute;
+    color:white;
+    top:3%;
+    width: 85%;
+    height: 95%;
+}
+
+.tradeAnalyzerTeamTable{
+    table-layout:fixed;
+    border-collapse: separate;
+    border-spacing: 1px 5px;
+}
+
+.tradeAnalyzerTeamTable td{
+    position: relative;
+    text-align: center;
+    background-color: rgba(153, 162, 177, 0.527);
+    border: 1px solid black;
+    color: rgb(247, 242, 242);
+    border-radius: 10%;
+}
+
+.submitPlayersButton{
+    position: relative;
+    top:2%;
+    left:25%;
+    background-color: rgb(196, 27, 69);
+    border-radius: 40%;
+    padding: 1%;
+}
+
+

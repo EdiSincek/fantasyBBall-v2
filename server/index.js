@@ -61,11 +61,20 @@ app.get("/roster", async (req, res) => {
   res.send(roster);
 });
 
+app.get("/rosterWithStats", async (req, res) => {
+  var roster = {};
+  if (req.query.teamId != "empty") {
+    roster = await yahoo.yahoo.getRosterWithStats(yf, req.query.teamId);
+  }
+  console.log(roster);
+  res.send(roster);
+});
+
 app.get("/teamAverageStats", async (req, res) => {
   const teamStats = await yahoo.yahoo.getTeamAverageStats(
     yf,
     req.query.teamId,
-    constants.NBA_2022
+    constants.NBA_2023
   );
   res.send(teamStats);
 });
