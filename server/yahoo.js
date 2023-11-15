@@ -155,7 +155,7 @@ exports.yahoo = {
   },
 
   //Get stats by player and by season; playerId and year key required
-  async getStatsByPlayer(yf, playerId, year) {
+  async getStatsByPlayer(yf, playerId, year = constants.NBA_2023) {
     const stats_list = [
       "games_played",
       "fg_percentage",
@@ -179,6 +179,7 @@ exports.yahoo = {
       if (stats != undefined) {
         result = {
           name: stats.name.full,
+          id: playerId,
           image: stats.image_url,
           real_team: stats.editorial_team_full_name,
           positions: stats.eligible_positions,
@@ -236,21 +237,37 @@ exports.yahoo = {
     }
   },
 
+  async getRosterWithStats(yf, teamId) {
+    try {
+      const statsByPlayer = [];
+      const roster = await this.getRoster(yf, teamId);
+      var i = 0;
+      for (const player of roster) {
+        const playerStats = await this.getStatsByPlayer(yf, player.player_id);
+        if (Object.keys(playerStats).length != 0) {
+          statsByPlayer[i] = playerStats;
+        }
+        i++;
+      }
+      return statsByPlayer;
+    } catch (e) {
+      console.log("Error in yahoo.js: getRosterWithStats: " + e);
+    }
+  },
+
   async getTeamAverageStats(yf, teamId, year = constants.NBA_2023) {
     try {
       const statsByPlayer = [];
       const roster = await this.getRoster(yf, teamId);
       var i = 0;
       for (const player of roster) {
-        if (player.player_id != "10094" && player.player_id != "10048") {
-          const playerStats = await this.getStatsByPlayer(
-            yf,
-            player.player_id,
-            year
-          );
-          if (Object.keys(playerStats).length != 0) {
-            statsByPlayer[i] = playerStats.stats;
-          }
+        const playerStats = await this.getStatsByPlayer(
+          yf,
+          player.player_id,
+          year
+        );
+        if (Object.keys(playerStats).length != 0) {
+          statsByPlayer[i] = playerStats;
         }
         i++;
       }
@@ -306,7 +323,7 @@ exports.yahoo = {
   },
 
   //Get season average stats - total / weeks, sorted by matchups won
-  getSeasonAverageStats() {
+  getSeasonTotalStats() {
     var result = [];
     var teamNum;
     for (var i = 1; i < constants.CURRENT_WEEK + 1; i++) {
@@ -351,13 +368,13 @@ exports.yahoo = {
             if (i == constants.CURRENT_WEEK) {
               entry.fg_percentage = (entry.fg_percentage / i).toFixed(3);
               entry.ft_percentage = (entry.ft_percentage / i).toFixed(3);
-              entry.three_made = (entry.three_made / i).toFixed(1);
-              entry.pts_total = (entry.pts_total / i).toFixed(1);
-              entry.rebounds_total = (entry.rebounds_total / i).toFixed(1);
-              entry.assists_total = (entry.assists_total / i).toFixed(1);
-              entry.steals_total = (entry.steals_total / i).toFixed(1);
-              entry.blocks_total = (entry.blocks_total / i).toFixed(1);
-              entry.turnovers_total = (entry.turnovers_total / i).toFixed(1);
+              entry.three_made = entry.three_made;
+              entry.pts_total = entry.pts_total;
+              entry.rebounds_total = entry.rebounds_total;
+              entry.assists_total = entry.assists_total;
+              entry.steals_total = entry.steals_total;
+              entry.blocks_total = entry.blocks_total;
+              entry.turnovers_total = entry.turnovers_total;
             }
           }
         });
@@ -391,20 +408,22 @@ function calculateTeamAverageStats(playerStats, teamId) {
   if (Object.keys(playerStats).length != 0) {
     for (const player of playerStats) {
       if (player != undefined && Object.keys(player).length != 0) {
-        if (player.games_played != "-") {
-          gp = gp + parseFloat(player.games_played);
-          fg_attempted = fg_attempted + parseFloat(player.fg_attempted);
-          fg_made = fg_made + parseFloat(player.fg_made);
-          ft_attempted = ft_attempted + parseFloat(player.ft_attempted);
-          ft_made = ft_made + parseFloat(player.ft_made);
-          three_made = three_made + parseFloat(player.three_made);
-          pts_total = pts_total + parseFloat(player.pts_total);
-          rebounds_total = rebounds_total + parseFloat(player.rebounds_total);
-          assists_total = assists_total + parseFloat(player.assists_total);
-          steals_total = steals_total + parseFloat(player.steals_total);
-          blocks_total = blocks_total + parseFloat(player.blocks_total);
+        if (player.stats.games_played != "-") {
+          gp = gp + parseFloat(player.stats.games_played);
+          fg_attempted = fg_attempted + parseFloat(player.stats.fg_attempted);
+          fg_made = fg_made + parseFloat(player.stats.fg_made);
+          ft_attempted = ft_attempted + parseFloat(player.stats.ft_attempted);
+          ft_made = ft_made + parseFloat(player.stats.ft_made);
+          three_made = three_made + parseFloat(player.stats.three_made);
+          pts_total = pts_total + parseFloat(player.stats.pts_total);
+          rebounds_total =
+            rebounds_total + parseFloat(player.stats.rebounds_total);
+          assists_total =
+            assists_total + parseFloat(player.stats.assists_total);
+          steals_total = steals_total + parseFloat(player.stats.steals_total);
+          blocks_total = blocks_total + parseFloat(player.stats.blocks_total);
           turnovers_total =
-            turnovers_total + parseFloat(player.turnovers_total);
+            turnovers_total + parseFloat(player.stats.turnovers_total);
         }
       }
     }

@@ -1,0 +1,50 @@
+.TeamSelections {
+    display:block;
+    width: 100%;
+    height: 10%;
+}
+
+.TeamSelections form label {
+    margin-left:3%;
+    color: white;
+}
+
+.TeamSelections form select {
+    color: black;
+    width: 30%;
+    margin-bottom: 1%;
+    margin-left: 1%;
+}
+
+.TeamSelections form input {
+    color: white;
+    background-color: green;
+    border-radius: 30%;
+    margin-left: 3%;
+    padding:0.3%;
+}
+
+.team2{
+    position: relative;
+    left:8vw;
+    width: 35vw;
+    height: 50vh;
+
+}
+.team1{
+    position: relative;
+    left:2vw;
+    width: 35vw;
+    height: 50vh;
+}
+
+.teamRosters{
+    display:flex;
+    height: 50vh;
+}
+
+.statsTable{
+    position: relative;
+    top:0%;
+    height:20vh;
+}

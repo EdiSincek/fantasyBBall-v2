@@ -1,0 +1,36 @@
+.TradeAnalyzerTeamStats{
+    color: white;
+    width:90%;
+}
+
+.statsBeforeTrade{
+    border: solid 2px rgb(109, 109, 221);
+    border-collapse: separate;
+    border-spacing: 1px 5px;
+    width: 100%;
+}
+
+.statsBeforeTrade td {
+    border: solid 2px rgb(109, 109, 221);
+    border-radius: 10%;
+    width: 10%;
+    text-align: center;
+}
+
+.differencePositive{
+    position: relative;
+    left:35%;
+    background-color: rgb(9, 107, 9);
+    width:30%;
+    border-radius: 40%;
+
+}
+
+.differenceNegative{
+    position: relative;
+    left: 35%;
+    background-color: rgb(226, 73, 73);
+    width: 30%;
+    border-radius: 40%;
+
+}

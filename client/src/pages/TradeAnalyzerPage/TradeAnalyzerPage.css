@@ -1,0 +1,23 @@
+.TradeAnalyzerPage{
+    position: absolute;
+    width:100%;
+    height: 100%;
+}
+
+.playerInput form label{
+    color:white;
+}
+
+.playerInput form select {
+    color: black;
+    width:20%;
+    margin-bottom: 1%;
+}
+
+.playerInput form input {
+    color: white;
+    background-color: green;
+    border-radius: 50%;
+    width: 5%;
+    height: 5%;
+}

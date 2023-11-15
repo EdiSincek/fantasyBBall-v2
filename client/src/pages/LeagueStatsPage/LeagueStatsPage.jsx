@@ -18,7 +18,7 @@ function LeagueStatsPage() {
 
   return (
     <div className="LeagueStatsPage">
-      <h1 className="weeklyTableLabel">Season Average</h1>
+      <h1 className="weeklyTableLabel">Season Total</h1>
       <table className="drTableWeekly">
         <thead>
           <tr>
