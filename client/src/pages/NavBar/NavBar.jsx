@@ -6,28 +6,74 @@ function NavBar() {
 
   return (
     <div className="NavBar">
-      <nav className="vertical-menu">
-        <a href="/">HOME</a>
-        <a href="/tradeAnalyzer">TRADE ANALYZER</a>
-        <a href="/league/standings">STANDINGS</a>
-        <a href="/player">TEST PLAYER PAGE</a>
+      <div class="page">
+        <nav class="page__menu menu">
+          <ul class="menu__list r-list">
+            <li class="menu__group">
+              <a href="/" class="menu__link r-link text-underlined">
+                HOME
+              </a>
+            </li>
+            <li class="menu__group">
+              <a href="/stats" class="menu__link r-link text-underlined">
+                TOTAL MATCHUP STATS
+              </a>
+            </li>
+            <div class="dropdown">
+              <button class="dropbtn">
+                <a href="/stats" class="menu__link r-link text-underlined">
+                  STATS
+                </a>
+              </button>
+              <div class="dropdown-content">
+                <a
+                  href="/stats/week/1"
+                  class="menu__link r-link text-underlined"
+                >
+                  Week 1
+                </a>
+                <a
+                  href="/stats/week/2"
+                  class="menu__link r-link text-underlined"
+                >
+                  Week 2
+                </a>
+                <a
+                  href="/stats/week/3"
+                  class="menu__link r-link text-underlined"
+                >
+                  Week 3
+                </a>
+              </div>
+            </div>
 
-        <div className="dropdown">
-          <button className="dropbtn">
-            {" "}
-            <a href="/stats">WEEKLY STATS</a>
-          </button>
-          <div className="dropdown-content">
-            <a href="/stats/week/1">Week 1</a>
-            <a href="/stats/week/2">Week 2</a>
-            <a href="/stats/week/3">Week 3</a>
-          </div>
-        </div>
-
-        <a className="admin" href="/admin">
-          ADMIN PAGE
-        </a>
-      </nav>
+            <li class="menu__group">
+              <a
+                href="/tradeAnalyzer"
+                class="menu__link r-link text-underlined"
+              >
+                TRADE ANALYZER
+              </a>
+            </li>
+            <li class="menu__group">
+              <a
+                href="/league/standings"
+                class="menu__link r-link text-underlined"
+              >
+                STANDINGS
+              </a>
+            </li>
+            <li class="menu__group">
+              <a href="/player" class="menu__link r-link text-underlined">
+                TEST PLAYER PAGE
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <nav class="page__menu page__custom-settings menu">
+          <ul class="menu__list r-list"></ul>
+        </nav>
+      </div>
     </div>
   );
 }
