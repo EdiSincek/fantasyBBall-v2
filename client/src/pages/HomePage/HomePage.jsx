@@ -2,12 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./HomePage.css";
 
 function HomePage() {
-  return (
-    <div className="container">
-      <div className="neon">FANTASY VZ </div>
-      <div className="flux">2023.-2024. </div>
-    </div>
-  );
+  return <div className="HomePage">FANTASY VZ</div>;
 }
 
 export default HomePage;
