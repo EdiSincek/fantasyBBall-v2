@@ -3,7 +3,6 @@ import "./App.css";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import NavBar from "./pages/NavBar/NavBar";
 import StandingsPage from "./pages/StandingsPage/StandingsPage";
-import Header from "./pages/Header/Header";
 import PlayerPage from "./pages/PlayerPage/PlayerPage";
 import HomePage from "./pages/HomePage/HomePage";
 import WeeklyStatsPage from "./pages/WeeklyStatsPage/WeeklyStatsPage";
