@@ -1,6 +1,11 @@
 .TradeAnalyzerTeamStats{
     color: white;
-    width:90%;
+}
+
+.TradeAnalyzerTeamStats table {
+    position: relative;
+    left:11%;
+    width:70%;
 }
 
 .statsBeforeTrade{
@@ -32,5 +37,19 @@
     background-color: rgb(226, 73, 73);
     width: 30%;
     border-radius: 40%;
+}
 
+.tableLabel{
+    position: relative;
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 500;
+    left:11%;
+}
+
+.calculateStatsBtn{
+    position: relative;
+    left:3%;
+    background-color: rgb(100, 177, 100);
+    border-radius: 30%;
+    width:7%;
 }

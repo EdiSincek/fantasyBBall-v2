@@ -54,9 +54,11 @@ function TradeAnalyzerTeamStats({}) {
   return (
     <div className="TradeAnalyzerTeamStats">
       <div className="tradeBtn">
-        <button onClick={trade}>TRADE</button>
+        <button className="calculateStatsBtn" onClick={trade}>
+          TRADE
+        </button>
       </div>
-      <h1>TEAM 1: BEFORE</h1>
+      <h1 className="tableLabel">TEAM 1: BEFORE</h1>
       <table className="statsBeforeTrade">
         <thead>
           <tr>
@@ -86,7 +88,7 @@ function TradeAnalyzerTeamStats({}) {
         </tbody>
       </table>
       <br />
-      <h1>TEAM 1: AFTER</h1>
+      <h1 className="tableLabel">TEAM 1: AFTER</h1>
       <table className="statsBeforeTrade">
         <thead>
           <tr>
@@ -233,8 +235,9 @@ function TradeAnalyzerTeamStats({}) {
           </tr>
         </tbody>
       </table>
+      <br />
 
-      <h1>TEAM 2: BEFORE</h1>
+      <h1 className="tableLabel">TEAM 2: BEFORE</h1>
       <table className="statsBeforeTrade">
         <thead>
           <tr>
@@ -264,7 +267,7 @@ function TradeAnalyzerTeamStats({}) {
         </tbody>
       </table>
       <br />
-      <h1>TEAM 2: AFTER</h1>
+      <h1 className="tableLabel">TEAM 2: AFTER</h1>
       <table className="statsBeforeTrade">
         <thead>
           <tr>

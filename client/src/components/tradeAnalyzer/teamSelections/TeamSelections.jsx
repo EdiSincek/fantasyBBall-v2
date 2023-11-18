@@ -73,7 +73,7 @@ class TeamSelections extends React.Component {
             <option value={11}>KK Romska Vatra</option>
             <option value={12}>KK Vindija</option>
           </select>
-          <input type="submit" value="TRADE" />
+          <input className="inputBtnSubmit" type="submit" value="TRADE" />
         </form>
         <div className="teamRosters">
           <div className="team1">

@@ -19,7 +19,7 @@ function WeeklyStatsPage() {
   }, [week]);
   return (
     <div className="WeeklyStatsPage">
-      <h1 className="weeklyTableLabel">Week {week}</h1>
+      <h1 className="weeklyTableLabel">Week {week} - weekly matchup stats</h1>
       <table className="drTableWeekly">
         <thead>
           <tr>

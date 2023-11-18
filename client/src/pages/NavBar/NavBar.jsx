@@ -44,6 +44,12 @@ function NavBar() {
                 >
                   Week 3
                 </a>
+                <a
+                  href="/stats/week/4"
+                  class="menu__link r-link text-underlined"
+                >
+                  Week 4
+                </a>
               </div>
             </div>
 
