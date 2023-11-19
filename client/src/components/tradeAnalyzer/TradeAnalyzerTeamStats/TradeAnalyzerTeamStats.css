@@ -9,14 +9,13 @@
 }
 
 .statsBeforeTrade{
-    border: solid 2px rgb(109, 109, 221);
     border-collapse: separate;
     border-spacing: 1px 5px;
     width: 100%;
 }
 
 .statsBeforeTrade td {
-    border: solid 2px rgb(109, 109, 221);
+    border: solid 2px rgb(156, 156, 182);
     border-radius: 10%;
     width: 10%;
     text-align: center;
