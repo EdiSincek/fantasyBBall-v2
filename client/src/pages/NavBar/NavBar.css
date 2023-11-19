@@ -2,6 +2,7 @@
     position: relative;
     width: 100%;
     height: 100%;   
+    color:white;
 }
 
 /*
@@ -10,9 +11,6 @@ DEPENDENCES
 =====
 */
 
-.r-link {
-    display: var(--rLinkDisplay, inline-flex) !important;
-}
 
 .r-link[href] {
     color: var(--rLinkColor) !important;
@@ -54,9 +52,9 @@ focus state
 fading siblings
 */
 
-.menu:hover .menu__link:not(:hover) {
+/* .menu:hover .menu__link:not(:hover) {
     --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, .35));
-}
+} */
 
 /*
 =====
@@ -64,18 +62,13 @@ PRESENTATION STYLES
 =====
 */
 
-.menu {
-    background-color: var(--menuBackgroundColor, #f0f0f0);
-    box-shadow: var(--menuBoxShadow, 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24));
-}
-
 .menu__list {
     display: flex;
 }
 
 .menu__link {
     padding: var(--menuLinkPadding, 1.5rem 2.5rem);
-    font-weight: 700;
+    font-weight: 500;
     text-transform: uppercase;
 }
 
@@ -88,7 +81,6 @@ TEXT UNDERLINED
 .text-underlined {
     position: relative;
     overflow: hidden;
-
     will-change: color;
     transition: color .25s ease-out;
 }
@@ -98,7 +90,7 @@ TEXT UNDERLINED
     content: "";
     width: 0;
     height: 3px;
-    background-color: var(--textUnderlinedLineColor, currentColor);
+    background-color: var(--textUnderlinedLineColor, rgb(124, 211, 211));
 
     will-change: width;
     transition: width .1s ease-out;
@@ -141,7 +133,7 @@ TEXT UNDERLINED
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    color: rgb(19, 79, 102);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -150,16 +142,14 @@ TEXT UNDERLINED
 /* Links inside the dropdown */
 .dropdown-content a {
     float: none;
-    color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
 }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
-    background-color: #ddd;
+.dropdown-content a:hover{
+    background-color: rgb(255, 255, 255);
 }
 
 /* Show the dropdown menu on hover */
