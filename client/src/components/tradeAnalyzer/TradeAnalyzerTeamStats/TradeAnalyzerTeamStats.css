@@ -2,6 +2,10 @@
     color: white;
 }
 
+.teamTradeStatsTables{
+    border-top:  3px black dotted;
+}
+
 .TradeAnalyzerTeamStats table {
     position: relative;
     left:11%;
@@ -45,10 +49,33 @@
     left:11%;
 }
 
+.tableExplanationLabel {
+    position: relative;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    left: 5%;
+    text-decoration: underline;
+    color:rgb(124, 211, 211);
+}
+
 .calculateStatsBtn{
     position: relative;
     left:3%;
     background-color: rgb(100, 177, 100);
     border-radius: 30%;
     width:7%;
+}
+
+.averageStatsGivenRecieved{
+    border-top:  3px black dashed;
+}
+
+.averageTradedHigher{
+    color:rgb(107, 226, 107);
+    font-weight: 500;
+}
+
+.averageTradedLower {
+    color: rgb(235, 106, 73);
+    font-weight: 500;
 }
