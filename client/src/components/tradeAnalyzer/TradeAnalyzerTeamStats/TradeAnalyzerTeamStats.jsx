@@ -245,7 +245,7 @@ function TradeAnalyzerTeamStats({}) {
                 <br />
                 <p
                   className={
-                    statsAfter1.turnovers_avg - statsBefore1.turnovers_avg < 0
+                    statsAfter1.turnovers_avg - statsBefore1.turnovers_avg > 0
                       ? "differenceNegative"
                       : "differencePositive"
                   }
@@ -428,7 +428,7 @@ function TradeAnalyzerTeamStats({}) {
                 <br />
                 <p
                   className={
-                    statsAfter2.turnovers_avg - statsBefore2.turnovers_avg < 0
+                    statsAfter2.turnovers_avg - statsBefore2.turnovers_avg > 0
                       ? "differenceNegative"
                       : "differencePositive"
                   }
@@ -543,7 +543,7 @@ function TradeAnalyzerTeamStats({}) {
               </td>
               <td
                 className={
-                  tradedAverageStats1.turnovers_avg <
+                  tradedAverageStats1.turnovers_avg >
                   tradedAverageStats2.turnovers_avg
                     ? "averageTradedLower"
                     : "averageTradedHigher"
@@ -653,7 +653,7 @@ function TradeAnalyzerTeamStats({}) {
               </td>
               <td
                 className={
-                  tradedAverageStats2.turnovers_avg <
+                  tradedAverageStats2.turnovers_avg >
                   tradedAverageStats1.turnovers_avg
                     ? "averageTradedLower"
                     : "averageTradedHigher"

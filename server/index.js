@@ -5,6 +5,7 @@ const yahoo = require("./yahoo");
 const auth_constants = require("./authorization.json");
 const auth = require("./authorization");
 const constants = require("./constants");
+const directToYahoo = require("./directCallsToYahoo");
 const app = express();
 const port = 3000;
 const fs = require("fs");
