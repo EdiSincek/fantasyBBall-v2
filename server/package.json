@@ -12,6 +12,7 @@
     "axios": "^1.5.1",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "fast-xml-parser": "^4.3.2",
     "nodemon": "^3.0.1",
     "qs": "^6.11.2",
     "yahoo-fantasy": "^5.2.2"
