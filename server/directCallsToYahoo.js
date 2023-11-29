@@ -4,12 +4,15 @@ const constants = require("./constants");
 const { XMLParser } = require("fast-xml-parser");
 
 exports.directToYahoo = {
-  async getFreeAgents() {
+  //Pass number of free agents wanted, will return player names, keys and ids
+  async getFreeAgents(playerAmmount) {
     const parser = new XMLParser();
     const url =
       "https://fantasysports.yahooapis.com/fantasy/v2/league/" +
       constants.LEAGUE_KEY +
-      "/players;status=FA;count=10;sort=OR";
+      "/players;status=FA;count=" +
+      playerAmmount +
+      ";sort=OR";
     try {
       response = await axios({
         url,
@@ -22,8 +25,22 @@ exports.directToYahoo = {
         },
       });
       const jsonData = parser.parse(response.data);
-      console.log(jsonData.fantasy_content.league.players.player);
-      return jsonData;
+      const freeAgents = [];
+      for (
+        var i = 0;
+        i < jsonData.fantasy_content.league.players.player.length;
+        i++
+      ) {
+        const player = {
+          name: jsonData.fantasy_content.league.players.player[i].name.full,
+          key: jsonData.fantasy_content.league.players.player[i].player_key,
+          id: jsonData.fantasy_content.league.players.player[i].player_id,
+        };
+        freeAgents[i] = player;
+      }
+      console.log(freeAgents);
+
+      return freeAgents;
     } catch (err) {
       console.error(`Error in getInitialAuthorization(): ${err}`);
     }
