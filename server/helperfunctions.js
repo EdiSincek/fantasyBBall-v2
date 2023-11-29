@@ -152,4 +152,20 @@ exports.helpers = {
     result.reverse();
     return result;
   },
+
+  calculateMean(array) {
+    var total = 0;
+    for (var i = 0; i < array.length; i++) {
+      total += array[i];
+    }
+    return total / array.length;
+  },
+
+  calculateStandardDeviation(array) {
+    const mean = this.calculateMean(array);
+    return Math.sqrt(
+      array.map((x) => Math.pow(x - mean, 2)).reduce((a, b) => a + b) /
+        (array.length - 1)
+    );
+  },
 };
