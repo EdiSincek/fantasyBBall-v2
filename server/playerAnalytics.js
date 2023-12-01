@@ -54,6 +54,7 @@ exports.playerAnalytics = {
         turnoversZScore
       )
     );
+    return playersZScore;
   },
 
   getTeamAvgAndDeviationByCategory(teamRosterWithStats) {
@@ -74,55 +75,57 @@ exports.playerAnalytics = {
       blocks = [],
       turnovers = [];
     for (var i = 0; i < teamRosterWithStats.length; i++) {
-      gp += parseInt(teamRosterWithStats[i].stats.games_played);
-      fg_attempted += parseInt(teamRosterWithStats[i].stats.fg_attempted);
-      fg_made += parseInt(teamRosterWithStats[i].stats.fg_made);
-      ft_attempted += parseInt(teamRosterWithStats[i].stats.ft_attempted);
-      ft_made += parseInt(teamRosterWithStats[i].stats.ft_made);
-      fg.push(
-        teamRosterWithStats[i].stats.fg_made /
-          teamRosterWithStats[i].stats.fg_attempted
-      );
-      fg_atmp.push(
-        teamRosterWithStats[i].stats.fg_attempted /
-          teamRosterWithStats[i].stats.games_played
-      );
-      ft.push(
-        teamRosterWithStats[i].stats.ft_made /
-          teamRosterWithStats[i].stats.ft_attempted
-      );
-      ft_atmp.push(
-        teamRosterWithStats[i].stats.ft_attempted /
-          teamRosterWithStats[i].stats.games_played
-      );
-      three.push(
-        teamRosterWithStats[i].stats.three_made /
-          teamRosterWithStats[i].stats.games_played
-      );
-      pts.push(
-        teamRosterWithStats[i].stats.pts_total /
-          teamRosterWithStats[i].stats.games_played
-      );
-      rebounds.push(
-        teamRosterWithStats[i].stats.rebounds_total /
-          teamRosterWithStats[i].stats.games_played
-      );
-      assists.push(
-        teamRosterWithStats[i].stats.assists_total /
-          teamRosterWithStats[i].stats.games_played
-      );
-      steals.push(
-        teamRosterWithStats[i].stats.steals_total /
-          teamRosterWithStats[i].stats.games_played
-      );
-      blocks.push(
-        teamRosterWithStats[i].stats.blocks_total /
-          teamRosterWithStats[i].stats.games_played
-      );
-      turnovers.push(
-        teamRosterWithStats[i].stats.turnovers_total /
-          teamRosterWithStats[i].stats.games_played
-      );
+      if (teamRosterWithStats[i].stats.games_played != "-") {
+        gp += parseInt(teamRosterWithStats[i].stats.games_played);
+        fg_attempted += parseInt(teamRosterWithStats[i].stats.fg_attempted);
+        fg_made += parseInt(teamRosterWithStats[i].stats.fg_made);
+        ft_attempted += parseInt(teamRosterWithStats[i].stats.ft_attempted);
+        ft_made += parseInt(teamRosterWithStats[i].stats.ft_made);
+        fg.push(
+          teamRosterWithStats[i].stats.fg_made /
+            teamRosterWithStats[i].stats.fg_attempted
+        );
+        fg_atmp.push(
+          teamRosterWithStats[i].stats.fg_attempted /
+            teamRosterWithStats[i].stats.games_played
+        );
+        ft.push(
+          teamRosterWithStats[i].stats.ft_made /
+            teamRosterWithStats[i].stats.ft_attempted
+        );
+        ft_atmp.push(
+          teamRosterWithStats[i].stats.ft_attempted /
+            teamRosterWithStats[i].stats.games_played
+        );
+        three.push(
+          teamRosterWithStats[i].stats.three_made /
+            teamRosterWithStats[i].stats.games_played
+        );
+        pts.push(
+          teamRosterWithStats[i].stats.pts_total /
+            teamRosterWithStats[i].stats.games_played
+        );
+        rebounds.push(
+          teamRosterWithStats[i].stats.rebounds_total /
+            teamRosterWithStats[i].stats.games_played
+        );
+        assists.push(
+          teamRosterWithStats[i].stats.assists_total /
+            teamRosterWithStats[i].stats.games_played
+        );
+        steals.push(
+          teamRosterWithStats[i].stats.steals_total /
+            teamRosterWithStats[i].stats.games_played
+        );
+        blocks.push(
+          teamRosterWithStats[i].stats.blocks_total /
+            teamRosterWithStats[i].stats.games_played
+        );
+        turnovers.push(
+          teamRosterWithStats[i].stats.turnovers_total /
+            teamRosterWithStats[i].stats.games_played
+        );
+      }
     }
 
     const result = {

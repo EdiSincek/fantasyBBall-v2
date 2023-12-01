@@ -5,10 +5,10 @@ const yahoo = require("./yahoo");
 const auth_constants = require("./authorization.json");
 const auth = require("./authorization");
 const constants = require("./constants");
-const directToYahoo = require("./directCallsToYahoo");
 const app = express();
 const port = 3000;
 const fs = require("fs");
+const bestPlayerFinder = require("./tools/bestPlayerFinder/bestPlayerFinder");
 
 const whitelist = ["http://localhost:3001"];
 const corsOptions = {
@@ -94,6 +94,17 @@ app.get("/weeklyLeagueStats", (req, res) => {
   }
   weeklyStats = readJsonFile(filePath);
   res.send(weeklyStats);
+});
+
+app.get("/getBestPlayer", async (req, res) => {
+  const teamId = req.query.teamId;
+  const secondTeamId = req.query.secondTeamId;
+  const result = await bestPlayerFinder.bestPlayerFinder.getBestPlayersForTeam(
+    yf,
+    teamId,
+    secondTeamId
+  );
+  res.send(result);
 });
 
 async function homePage() {
