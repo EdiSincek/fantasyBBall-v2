@@ -255,6 +255,7 @@ exports.yahoo = {
     }
   },
 
+  //Calculates weighted team average stats
   async getTeamAverageStats(yf, teamId, year = constants.NBA_2023) {
     try {
       const statsByPlayer = [];
