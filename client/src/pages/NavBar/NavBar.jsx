@@ -86,6 +86,14 @@ function NavBar() {
                 TEST PLAYER PAGE
               </a>
             </li>
+            <li className="menu__group">
+              <a
+                href="/bestPlayerPage"
+                className="menu__link r-link text-underlined"
+              >
+                BPF
+              </a>
+            </li>
           </ul>
         </nav>
         <nav className="page__menu page__custom-settings menu">

@@ -5,55 +5,71 @@ exports.playerAnalytics = {
 
   getPlayerZScore(teamStats, playerStats) {},
 
-  getPlayerZScoreFromAvgStats(teamAvgStats, playerStats) {
+  getPlayerZScoreFromAvgStats(
+    teamAvgStats,
+    playerStats,
+    excludedCategories = []
+  ) {
+    const zScoreByCategory = [];
     //Calculate weighted z scores of fg and ft
     const fgZScore =
       ((playerStats.fg_avg - teamAvgStats.fg_avg) / teamAvgStats.fg_stdDev) *
       (playerStats.fg_attempted /
         playerStats.games_played /
         teamAvgStats.fg_attempted_avg);
+    if (!excludedCategories.includes("fg")) zScoreByCategory.push(fgZScore);
+
     const ftZScore =
       ((playerStats.ft_avg - teamAvgStats.ft_avg) / teamAvgStats.ft_stdDev) *
       (playerStats.ft_attempted /
         playerStats.games_played /
         teamAvgStats.ft_attempted_avg);
+    if (!excludedCategories.includes("ft")) zScoreByCategory.push(ftZScore);
 
     //Calculate z score of other categories
     const threeZScore =
       (playerStats.three_avg - teamAvgStats.three_avg) /
       teamAvgStats.three_stdDev;
+    if (!excludedCategories.includes("three"))
+      zScoreByCategory.push(threeZScore);
+
     const pointsZScore =
       (playerStats.pts_avg - teamAvgStats.pts_avg) / teamAvgStats.pts_stdDev;
+    if (!excludedCategories.includes("pts"))
+      zScoreByCategory.push(pointsZScore);
+
     const reboundsZScore =
       (playerStats.rebounds_avg - teamAvgStats.rebounds_avg) /
       teamAvgStats.rebounds_stdDev;
+    if (!excludedCategories.includes("rebounds"))
+      zScoreByCategory.push(reboundsZScore);
+
     const assistsZScore =
       (playerStats.assists_avg - teamAvgStats.assists_avg) /
       teamAvgStats.assists_stdDev;
+    if (!excludedCategories.includes("assists"))
+      zScoreByCategory.push(assistsZScore);
+
     const stealsZScore =
       (playerStats.steals_avg - teamAvgStats.steals_avg) /
       teamAvgStats.steals_stdDev;
+    if (!excludedCategories.includes("steals"))
+      zScoreByCategory.push(stealsZScore);
+
     const blocksZScore =
       (playerStats.blocks_avg - teamAvgStats.blocks_avg) /
       teamAvgStats.blocks_stdDev;
+    if (!excludedCategories.includes("blocks"))
+      zScoreByCategory.push(blocksZScore);
+
     const turnoversZScore =
       -1 *
       ((playerStats.turnovers_avg - teamAvgStats.turnovers_avg) /
         teamAvgStats.turnovers_stdDev);
+    if (!excludedCategories.includes("turnovers"))
+      zScoreByCategory.push(turnoversZScore);
 
-    const playersZScore = helpers.helpers.calculateMean(
-      Array.of(
-        fgZScore,
-        ftZScore,
-        threeZScore,
-        pointsZScore,
-        reboundsZScore,
-        assistsZScore,
-        stealsZScore,
-        blocksZScore,
-        turnoversZScore
-      )
-    );
+    const playersZScore = helpers.helpers.calculateMean(zScoreByCategory);
     return playersZScore;
   },
 
