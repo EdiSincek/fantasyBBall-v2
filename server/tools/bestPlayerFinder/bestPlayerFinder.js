@@ -4,26 +4,31 @@ const playerAnalytics = require("../../playerAnalytics");
 const fs = require("fs");
 
 exports.bestPlayerFinder = {
-  async getBestPlayersForTeam(yf, teamId, secondTeamId) {
+  async getBestPlayersForTeam(secondTeamId, stats, puntCategories, minusOne) {
     const result = [];
-    const stats = await yahoo.yahoo.getRosterWithStats(yf, teamId);
     const avgAndZ =
       playerAnalytics.playerAnalytics.getTeamAvgAndDeviationByCategory(stats);
     const allPlayers = readJsonFile("allRosteredPlayersWithStats.json");
     for (var i = 0; i < allPlayers[secondTeamId - 1].length; i++) {
       const zScore =
-        playerAnalytics.playerAnalytics.getPlayerZScoreFromAvgStats(
-          avgAndZ,
-          allPlayers[secondTeamId - 1][i].stats
-        );
+        allPlayers[secondTeamId - 1][i].stats.games_played != "-"
+          ? playerAnalytics.playerAnalytics.getPlayerZScoreFromAvgStats(
+              avgAndZ,
+              allPlayers[secondTeamId - 1][i].stats,
+              puntCategories,
+              minusOne
+            )
+          : {};
       const player = {
         name: allPlayers[secondTeamId - 1][i].name,
         stats: allPlayers[secondTeamId - 1][i].stats,
-        zScore: isNaN(zScore) ? -999 : zScore,
+        zScore: zScore,
       };
       result[i] = player;
     }
-    result.sort((a, b) => a.zScore - b.zScore).reverse();
+    result
+      .sort((a, b) => a.zScore.totalZScore - b.zScore.totalZScore)
+      .reverse();
     return result;
   },
 
@@ -37,6 +42,7 @@ exports.bestPlayerFinder = {
     }
     for (i = 0; i < result.length; i++) {
       for (var j = 0; j < result[i].length; j++) {
+        console.log("Calculating stats for player: " + result[i][j].name);
         result[i][j].stats = calculateAverages(result[i][j].stats);
       }
     }

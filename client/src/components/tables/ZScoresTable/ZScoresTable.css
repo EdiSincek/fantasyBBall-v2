@@ -1,0 +1,31 @@
+.ZScoresTable{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width:50%;
+}
+
+.ZScoresTable table{
+    width:100%;
+    color:white;
+}
+
+.ZScoresTable td{
+    border: solid black 2px;
+}
+
+.includedCategory{
+    background-color: green;
+}
+
+.excludedCategory {
+    display:none;
+}
+
+.positiveZScore {
+    background-color: green;
+}
+
+.negativeZScore {
+    background-color: red
+}
