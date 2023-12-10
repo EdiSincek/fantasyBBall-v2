@@ -9,6 +9,7 @@ import WeeklyStatsPage from "./pages/WeeklyStatsPage/WeeklyStatsPage";
 import LeagueStatsPage from "./pages/LeagueStatsPage/LeagueStatsPage";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import TradeAnalyzerPage from "./pages/TradeAnalyzerPage/TradeAnalyzerPage";
+import BestPlayerPage from "./pages/BestPlayerPage/BestPlayerPage";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/stats/week/:week" element={<WeeklyStatsPage />} />
             <Route path="/admin" element={<AdminPage />} />
             <Route path="/tradeAnalyzer" element={<TradeAnalyzerPage />} />
+            <Route path="/bestPlayerPage" element={<BestPlayerPage />} />
           </Routes>
         </div>
       </div>

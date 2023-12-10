@@ -1,14 +1,16 @@
 const express = require("express");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const YahooFantasy = require("yahoo-fantasy");
 const yahoo = require("./yahoo");
 const auth_constants = require("./authorization.json");
 const auth = require("./authorization");
 const constants = require("./constants");
-const directToYahoo = require("./directCallsToYahoo");
 const app = express();
 const port = 3000;
 const fs = require("fs");
+const bestPlayerFinder = require("./tools/bestPlayerFinder/bestPlayerFinder");
+const { HttpStatusCode } = require("axios");
 
 const whitelist = ["http://localhost:3001"];
 const corsOptions = {
@@ -26,6 +28,7 @@ app.use(cors(corsOptions));
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
+app.use(bodyParser.json());
 
 const yf = new YahooFantasy(
   auth_constants.CUSTOMER_ID,
@@ -94,6 +97,21 @@ app.get("/weeklyLeagueStats", (req, res) => {
   }
   weeklyStats = readJsonFile(filePath);
   res.send(weeklyStats);
+});
+
+app.post("/getBestPlayer", async (req, res) => {
+  const secondTeamId = req.body.secondTeamId;
+  const teamStats = req.body.teamStats;
+  const puntCategories = req.body.puntCategories;
+  const minusOne = req.body.minusOne;
+
+  const result = await bestPlayerFinder.bestPlayerFinder.getBestPlayersForTeam(
+    secondTeamId,
+    teamStats,
+    puntCategories,
+    minusOne
+  );
+  res.send(result);
 });
 
 async function homePage() {

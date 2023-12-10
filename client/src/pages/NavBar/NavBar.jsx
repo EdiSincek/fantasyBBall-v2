@@ -56,6 +56,18 @@ function NavBar() {
                 >
                   Week 5
                 </a>
+                <a
+                  href="/stats/week/6"
+                  className="menu__link r-link text-underlined"
+                >
+                  Week 6
+                </a>
+                <a
+                  href="/stats/week/7"
+                  className="menu__link r-link text-underlined"
+                >
+                  Week 7
+                </a>
               </div>
             </div>
 
@@ -78,6 +90,14 @@ function NavBar() {
             <li className="menu__group">
               <a href="/player" className="menu__link r-link text-underlined">
                 TEST PLAYER PAGE
+              </a>
+            </li>
+            <li className="menu__group">
+              <a
+                href="/bestPlayerPage"
+                className="menu__link r-link text-underlined"
+              >
+                BEST PLAYER FINDER
               </a>
             </li>
           </ul>
