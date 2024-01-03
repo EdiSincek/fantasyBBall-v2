@@ -44,10 +44,6 @@ function TeamRosters({ teamId, team }) {
     sessionStorage.setItem("removedPlayers" + team, removedPlayers);
   }
 
-  const myComponentStyle = {
-    fontSize: "1.7vh",
-  };
-
   return (
     <div className="TeamRosters">
       <table className="tradeAnalyzerTeamTable">
@@ -72,7 +68,7 @@ function TeamRosters({ teamId, team }) {
         <tbody>
           {Object.values(teamStats).map((player) => (
             <tr key={player.name}>
-              <td style={myComponentStyle}>{player.name.split(" ")[1]}</td>
+              <td>{player.name.split(" ")[1]}</td>
               <td>{player.positions}</td>
               <td>
                 <input

@@ -91,9 +91,9 @@ app.get("/matchups", async (req, res) => {
 app.get("/weeklyLeagueStats", (req, res) => {
   var filePath;
   if (req.query.week == "season") {
-    filePath = "stats-season.json";
+    filePath = "./data/weeklyStats/stats-season.json";
   } else {
-    filePath = "stats-week-" + req.query.week + ".json";
+    filePath = "./data/weeklyStats/stats-week-" + req.query.week + ".json";
   }
   weeklyStats = readJsonFile(filePath);
   res.send(weeklyStats);

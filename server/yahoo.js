@@ -317,7 +317,7 @@ exports.yahoo = {
     });
 
     resultSorted = helpers.helpers.sortLeagueStats(result);
-    const fileName = "stats-week-" + week + ".json";
+    const fileName = "./data/weeklyStats/stats-week-" + week + ".json";
     const json = JSON.stringify(resultSorted);
     writeToFile(json, fileName, "w");
     console.log("Weekly data for week " + week + " added.");
@@ -328,7 +328,7 @@ exports.yahoo = {
     var result = [];
     var teamNum;
     for (var i = 1; i < constants.CURRENT_WEEK + 1; i++) {
-      const filePath = "stats-week-" + i + ".json";
+      const filePath = "./data/weeklyStats/stats-week-" + i + ".json";
 
       weeklyData = fs.readFileSync(filePath);
       weeklyData = JSON.parse(weeklyData);
