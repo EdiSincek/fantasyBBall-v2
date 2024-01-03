@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./NavBar.css";
 
 function NavBar() {
-  useEffect(() => {}, []);
-
   return (
     <div className="NavBar">
       <div className="page">
@@ -25,50 +23,7 @@ function NavBar() {
                   STATS
                 </a>
               </button>
-              <div className="dropdown-content">
-                <a
-                  href="/stats/week/1"
-                  className="menu__link r-link text-underlined"
-                >
-                  Week 1
-                </a>
-                <a
-                  href="/stats/week/2"
-                  className="menu__link r-link text-underlined"
-                >
-                  Week 2
-                </a>
-                <a
-                  href="/stats/week/3"
-                  className="menu__link r-link text-underlined"
-                >
-                  Week 3
-                </a>
-                <a
-                  href="/stats/week/4"
-                  className="menu__link r-link text-underlined"
-                >
-                  Week 4
-                </a>
-                <a
-                  href="/stats/week/5"
-                  className="menu__link r-link text-underlined"
-                >
-                  Week 5
-                </a>
-                <a
-                  href="/stats/week/6"
-                  className="menu__link r-link text-underlined"
-                >
-                  Week 6
-                </a>
-                <a
-                  href="/stats/week/7"
-                  className="menu__link r-link text-underlined"
-                >
-                  Week 7
-                </a>
-              </div>
+              <div className="dropdown-content">{getWeeklyStats()}</div>
             </div>
 
             <li className="menu__group">
@@ -108,6 +63,21 @@ function NavBar() {
       </div>
     </div>
   );
+}
+
+function getWeeklyStats() {
+  const weeks = [];
+  const currentWeek = 11;
+  for (var i = 1; i < currentWeek + 1; i++) {
+    const weeklyHref = "/stats/week/" + i;
+    const weeklyLable = "Week " + i;
+    weeks.push(
+      <a href={weeklyHref} className="menu__link r-link text-underlined">
+        {weeklyLable}
+      </a>
+    );
+  }
+  return weeks;
 }
 
 export default NavBar;

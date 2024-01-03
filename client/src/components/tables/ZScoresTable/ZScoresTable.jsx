@@ -7,7 +7,6 @@ function ZScoresTable({ players, excluded }) {
   useEffect(() => {
     setplayerList(players);
     setExcludedCategories(excluded);
-    console.log(excluded);
   }, [players, excluded]);
 
   return (

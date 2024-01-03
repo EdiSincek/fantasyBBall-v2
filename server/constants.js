@@ -4,5 +4,5 @@ module.exports = Object.freeze({
   NBA_2022: "418",
   LEAGUE_KEY: "428.l.120707",
   NUM_TEAMS: 12,
-  CURRENT_WEEK: 6,
+  CURRENT_WEEK: 11,
 });

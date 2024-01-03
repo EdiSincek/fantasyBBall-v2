@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./AdminPage.css";
 
 function AdminPage() {
-  useEffect(() => {}, []);
-
   return (
     <div className="AdminPage">
       <div className="weeklyStats">

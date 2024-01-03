@@ -8,7 +8,7 @@ exports.bestPlayerFinder = {
     const result = [];
     const avgAndZ =
       playerAnalytics.playerAnalytics.getTeamAvgAndDeviationByCategory(stats);
-    const allPlayers = readJsonFile("allRosteredPlayersWithStats.json");
+    const allPlayers = readJsonFile("./data/allRosteredPlayersWithStats.json");
     for (var i = 0; i < allPlayers[secondTeamId - 1].length; i++) {
       const zScore =
         allPlayers[secondTeamId - 1][i].stats.games_played != "-"
@@ -34,7 +34,7 @@ exports.bestPlayerFinder = {
 
   async getAllRosteredPlayersWithStats(yf) {
     var result = [];
-    const fileName = "allRosteredPlayersWithStats.json";
+    const fileName = "./data/weeklyStats/allRosteredPlayersWithStats.json";
     for (var i = 1; i < constants.NUM_TEAMS + 1; i++) {
       console.log("Getting players for team: " + i);
       const players = await yahoo.yahoo.getRosterWithStats(yf, i);
