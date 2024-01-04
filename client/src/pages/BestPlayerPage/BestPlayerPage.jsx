@@ -98,6 +98,7 @@ function BestPlayerPage() {
                 <option value={10}>VŽ Balkanersi</option>
                 <option value={11}>KK Romska Vatra</option>
                 <option value={12}>KK Vindija</option>
+                <option value={"FA"}>Free Agents</option>
               </select>
               <input className="inputBtnSubmit" type="submit" value="SELECT" />
             </form>

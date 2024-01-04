@@ -8,24 +8,50 @@ exports.bestPlayerFinder = {
     const result = [];
     const avgAndZ =
       playerAnalytics.playerAnalytics.getTeamAvgAndDeviationByCategory(stats);
-    const allPlayers = readJsonFile("./data/allRosteredPlayersWithStats.json");
-    for (var i = 0; i < allPlayers[secondTeamId - 1].length; i++) {
-      const zScore =
-        allPlayers[secondTeamId - 1][i].stats.games_played != "-"
-          ? playerAnalytics.playerAnalytics.getPlayerZScoreFromAvgStats(
-              avgAndZ,
-              allPlayers[secondTeamId - 1][i].stats,
-              puntCategories,
-              minusOne
-            )
-          : {};
-      const player = {
-        name: allPlayers[secondTeamId - 1][i].name,
-        stats: allPlayers[secondTeamId - 1][i].stats,
-        zScore: zScore,
-      };
-      result[i] = player;
+
+    if (secondTeamId == "FA") {
+      const allPlayers = readJsonFile("./data/freeAgents.json");
+      for (var i = 0; i < allPlayers.length; i++) {
+        const zScore =
+          allPlayers[i].stats.games_played != "-"
+            ? playerAnalytics.playerAnalytics.getPlayerZScoreFromAvgStats(
+                avgAndZ,
+                allPlayers[i].stats,
+                puntCategories,
+                minusOne
+              )
+            : {};
+
+        const player = {
+          name: allPlayers[i].name,
+          stats: allPlayers[i].stats,
+          zScore: zScore,
+        };
+        result[i] = player;
+      }
+    } else {
+      const allPlayers = readJsonFile(
+        "./data/allRosteredPlayersWithStats.json"
+      );
+      for (var i = 0; i < allPlayers[secondTeamId - 1].length; i++) {
+        const zScore =
+          allPlayers[secondTeamId - 1][i].stats.games_played != "-"
+            ? playerAnalytics.playerAnalytics.getPlayerZScoreFromAvgStats(
+                avgAndZ,
+                allPlayers[secondTeamId - 1][i].stats,
+                puntCategories,
+                minusOne
+              )
+            : {};
+        const player = {
+          name: allPlayers[secondTeamId - 1][i].name,
+          stats: allPlayers[secondTeamId - 1][i].stats,
+          zScore: zScore,
+        };
+        result[i] = player;
+      }
     }
+
     result
       .sort((a, b) => a.zScore.totalZScore - b.zScore.totalZScore)
       .reverse();
@@ -34,7 +60,7 @@ exports.bestPlayerFinder = {
 
   async getAllRosteredPlayersWithStats(yf) {
     var result = [];
-    const fileName = "./data/weeklyStats/allRosteredPlayersWithStats.json";
+    const fileName = "./data/allRosteredPlayersWithStats.json";
     for (var i = 1; i < constants.NUM_TEAMS + 1; i++) {
       console.log("Getting players for team: " + i);
       const players = await yahoo.yahoo.getRosterWithStats(yf, i);
