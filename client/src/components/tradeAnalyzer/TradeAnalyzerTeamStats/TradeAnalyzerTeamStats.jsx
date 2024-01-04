@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import "./TradeAnalyzerTeamStats.css";
 
-function TradeAnalyzerTeamStats({}) {
+function TradeAnalyzerTeamStats() {
   const initalState = {
     fg_percentage: 0,
     ft_percentage: 0,

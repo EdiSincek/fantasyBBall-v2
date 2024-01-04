@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./TeamSelections.css";
 import TeamRosters from "../teamRosters/TeamRosters";
 import TradeAnalyzerTeamStats from "../TradeAnalyzerTeamStats/TradeAnalyzerTeamStats";
@@ -52,7 +52,7 @@ class TeamSelections extends React.Component {
             <option value={5}>Mamojebači </option>
             <option value={6}>Prednji Križni Derricka Rose-a</option>
             <option value={7}>Rings Erneh</option>
-            <option value={8}>Thomas' Tank Engine</option>
+            <option value={8}>Thomas&apos; Tank Engine</option>
             <option value={9}>Triple Single</option>
             <option value={10}>VŽ Balkanersi</option>
             <option value={11}>KK Romska Vatra</option>
@@ -67,7 +67,7 @@ class TeamSelections extends React.Component {
             <option value={5}>Mamojebači </option>
             <option value={6}>Prednji Križni Derricka Rose-a</option>
             <option value={7}>Rings Erneh</option>
-            <option value={8}>Thomas' Tank Engine</option>
+            <option value={8}>Thomas&apos; Tank Engine</option>
             <option value={9}>Triple Single</option>
             <option value={10}>VŽ Balkanersi</option>
             <option value={11}>KK Romska Vatra</option>

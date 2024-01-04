@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./BestPlayerPage.css";
 import ZScoresTable from "../../components/tables/ZScoresTable/ZScoresTable";
 
@@ -67,7 +67,7 @@ function BestPlayerPage() {
             <option value={5}>Mamojebači </option>
             <option value={6}>Prednji Križni Derricka Rose-a</option>
             <option value={7}>Rings Erneh</option>
-            <option value={8}>Thomas' Tank Engine</option>
+            <option value={8}>Thomas&apos; Tank Engine</option>
             <option value={9}>Triple Single</option>
             <option value={10}>VŽ Balkanersi</option>
             <option value={11}>KK Romska Vatra</option>
@@ -93,7 +93,7 @@ function BestPlayerPage() {
                 <option value={5}>Mamojebači </option>
                 <option value={6}>Prednji Križni Derricka Rose-a</option>
                 <option value={7}>Rings Erneh</option>
-                <option value={8}>Thomas' Tank Engine</option>
+                <option value={8}>Thomas&apos; Tank Engine</option>
                 <option value={9}>Triple Single</option>
                 <option value={10}>VŽ Balkanersi</option>
                 <option value={11}>KK Romska Vatra</option>
