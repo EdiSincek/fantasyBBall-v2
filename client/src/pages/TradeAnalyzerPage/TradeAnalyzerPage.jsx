@@ -1,4 +1,3 @@
-import React from "react";
 import "./TradeAnalyzerPage.css";
 import TeamSelections from "../../components/tradeAnalyzer/teamSelections/TeamSelections";
 

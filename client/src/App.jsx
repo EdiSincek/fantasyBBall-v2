@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import "react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css";
 import NavBar from "./pages/NavBar/NavBar";

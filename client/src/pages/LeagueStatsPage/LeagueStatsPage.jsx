@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./LeagueStatsPage.css";
 import "../WeeklyStatsPage/WeeklyStatsPage.css";
 import GoldenMedal from "../../assets/goldCoin.png";
