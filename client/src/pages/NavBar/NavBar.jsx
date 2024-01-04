@@ -43,11 +43,6 @@ function NavBar() {
               </a>
             </li>
             <li className="menu__group">
-              <a href="/player" className="menu__link r-link text-underlined">
-                TEST PLAYER PAGE
-              </a>
-            </li>
-            <li className="menu__group">
               <a
                 href="/bestPlayerPage"
                 className="menu__link r-link text-underlined"
