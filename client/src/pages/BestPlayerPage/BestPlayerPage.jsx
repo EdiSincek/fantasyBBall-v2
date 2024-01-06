@@ -19,23 +19,37 @@ function BestPlayerPage() {
       .catch((error) => console.error(error));
   }
 
-  async function selectSecondTeam(event) {
-    event.preventDefault();
-    const url = "http://localhost:3000/getBestPlayer";
+  function setPunts() {
     const checkboxes = document.getElementsByClassName("puntCheckbox");
-    var minusOne = false;
     const checkedCheckboxes = Array.prototype.slice
       .call(checkboxes)
       .filter((ch) => ch.checked == true);
     const puntCategories = [];
     for (const n of checkedCheckboxes) {
-      if (n.value == "minusOne") {
-        minusOne = true;
-      } else {
+      if (n.value != "minusOne") {
         puntCategories.push(n.value);
       }
     }
     setExcludedCategories(puntCategories);
+    return puntCategories;
+  }
+
+  async function selectSecondTeam(event) {
+    var secondTeamId;
+    if (event.type === "submit") {
+      event.preventDefault();
+      secondTeamId = event.target[0].value;
+      localStorage.setItem("secondTeamBPF", secondTeamId);
+    } else {
+      secondTeamId = localStorage.getItem("secondTeamBPF");
+    }
+
+    const url = "http://localhost:3000/getBestPlayer";
+    const puntCategories = setPunts();
+    const minusOne =
+      document.getElementById("minusOne") != null
+        ? document.getElementById("minusOne").checked
+        : false;
 
     await fetch(url, {
       method: "POST",
@@ -44,7 +58,7 @@ function BestPlayerPage() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        secondTeamId: event.target[0].value,
+        secondTeamId: secondTeamId,
         teamStats: teamStats,
         puntCategories: puntCategories,
         minusOne: minusOne,
@@ -58,7 +72,7 @@ function BestPlayerPage() {
     <div className="BestPlayerPage">
       <div className="TeamSelectionsBPF">
         <form onSubmit={selectTeam}>
-          <label htmlFor="team">TEAM 1:</label>
+          <label htmlFor="team">SELECT TEAM 1:</label>
           <select id="team">
             <option value={1}>Healthy Guys</option>
             <option value={2}>Cedevita</option>
@@ -76,15 +90,14 @@ function BestPlayerPage() {
           <input className="inputBtnSubmit" type="submit" value="SELECT" />
         </form>
       </div>
-      {Object.keys(teamStats).length == 0 ? (
-        <p className="infoMsg">SELECT YOUR TEAM</p>
-      ) : Object.keys(teamStats).length == 1 ? (
+      {Object.keys(teamStats).length == 0 ? null : Object.keys(teamStats)
+          .length == 1 ? (
         <p className="infoMsg">{teamStats.loading}</p>
       ) : (
         <div>
           <div className="TeamSelectionsBPF">
             <form onSubmit={selectSecondTeam}>
-              <label htmlFor="team">TEAM 2:</label>
+              <label htmlFor="team">SELECT TEAM 2:</label>
               <select id="team">
                 <option value={1}>Healthy Guys</option>
                 <option value={2}>Cedevita</option>
@@ -100,11 +113,10 @@ function BestPlayerPage() {
                 <option value={12}>KK Vindija</option>
                 <option value={"FA"}>Free Agents</option>
               </select>
-              <input className="inputBtnSubmit" type="submit" value="SELECT" />
+              <input className="inputBtnSubmit2" type="submit" value="SELECT" />
             </form>
           </div>
           <div className="puntCategories">
-            <h1>PUNT: </h1>
             <div className="singleCategory">
               <p>FG</p>
               <input
@@ -112,7 +124,11 @@ function BestPlayerPage() {
                 type="checkbox"
                 value="fg"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
             <div className="singleCategory">
               <p>FT</p>
@@ -121,7 +137,11 @@ function BestPlayerPage() {
                 type="checkbox"
                 value="ft"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
             <div className="singleCategory">
               <p>3</p>
@@ -130,7 +150,11 @@ function BestPlayerPage() {
                 type="checkbox"
                 value="three"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
             <div className="singleCategory">
               <p>PTS</p>
@@ -139,7 +163,11 @@ function BestPlayerPage() {
                 type="checkbox"
                 value="pts"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
             <div className="singleCategory">
               <p>REB</p>
@@ -148,7 +176,11 @@ function BestPlayerPage() {
                 type="checkbox"
                 value="rebounds"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
             <div className="singleCategory">
               <p>AST</p>
@@ -157,7 +189,11 @@ function BestPlayerPage() {
                 type="checkbox"
                 value="assists"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
             <div className="singleCategory">
               <p>STL</p>
@@ -166,7 +202,11 @@ function BestPlayerPage() {
                 type="checkbox"
                 value="steals"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
             <div className="singleCategory">
               <p>BLK</p>
@@ -175,7 +215,11 @@ function BestPlayerPage() {
                 type="checkbox"
                 value="blocks"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
             <div className="singleCategory">
               <p>TRN</p>
@@ -184,16 +228,25 @@ function BestPlayerPage() {
                 type="checkbox"
                 value="turnovers"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
             <div className="singleCategory">
               <p>-1</p>
               <input
                 className="puntCheckbox"
+                id="minusOne"
                 type="checkbox"
                 value="minusOne"
                 name="puntCheckbox"
+                onChange={selectSecondTeam}
               />
+              <label className="puntLabel" htmlFor="switch">
+                Toggle
+              </label>
             </div>
           </div>
         </div>
