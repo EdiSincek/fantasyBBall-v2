@@ -97,8 +97,10 @@ function ZScoresTable({ players, excluded }) {
         <tbody>
           {Object.values(playerList).map((player) => (
             <tr key={player.name}>
-              <td>{playerList.indexOf(player) + 1}.</td>
-              <td>{player.name}</td>
+              <td className="playerPosition">
+                {playerList.indexOf(player) + 1}.
+              </td>
+              <td className="playerName">{player.name}</td>
               <td
                 className={
                   player.zScore.totalZScore > 0

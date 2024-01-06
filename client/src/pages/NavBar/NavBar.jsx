@@ -11,11 +11,6 @@ function NavBar() {
                 HOME
               </a>
             </li>
-            <li className="menu__group">
-              <a href="/stats" className="menu__link r-link text-underlined">
-                TOTAL MATCHUP STATS
-              </a>
-            </li>
             <div className="dropdown">
               <button className="dropbtn">
                 <a href="/stats" className="menu__link r-link text-underlined">
@@ -24,21 +19,20 @@ function NavBar() {
               </button>
               <div className="dropdown-content">{getWeeklyStats()}</div>
             </div>
-
-            <li className="menu__group">
-              <a
-                href="/tradeAnalyzer"
-                className="menu__link r-link text-underlined"
-              >
-                TRADE ANALYZER
-              </a>
-            </li>
             <li className="menu__group">
               <a
                 href="/league/standings"
                 className="menu__link r-link text-underlined"
               >
                 STANDINGS
+              </a>
+            </li>
+            <li className="menu__group">
+              <a
+                href="/tradeAnalyzer"
+                className="menu__link r-link text-underlined"
+              >
+                TRADE ANALYZER
               </a>
             </li>
             <li className="menu__group">
